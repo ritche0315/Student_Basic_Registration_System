@@ -1,0 +1,43 @@
+<nav>
+    <div class="site-title">
+        <a href="/index"><h1>Basic Student Registration System.</h1></a>
+    </div>
+
+    <hr class="separator-nav">
+
+    <ul>
+        <li><a class="navlink-index"href="/">Home</a></li>
+        <li><a class="navlink-students" href="/students">Students</a></li>
+        <li><a class="navlink-register" href="/student-registration">Register</a></li>
+        <li><a class="navlink-about" href="/about">About</a></li>
+
+        <%if(pageName == "index"){%>
+            <script>
+                const navlinkIndex = document.querySelectorAll('.navlink-index');
+                navlinkIndex[0].classList.add("active");
+            </script>
+        <%};%>
+        <%if(pageName == "students"){%>
+            <script>
+                const navlinkStudents = document.querySelectorAll('.navlink-students');
+                navlinkStudents[0].classList.add("active");
+            </script>
+        <%};%>
+        <%if(pageName == "register"){%>
+            <script>
+                const navlinkRegister = document.querySelectorAll('.navlink-register');
+                navlinkRegister[0].classList.add("active");
+            </script>
+
+        <%};%>
+
+        <%if(pageName == "about"){%>
+            <script>
+                const navlinkAbout = document.querySelectorAll('.navlink-about');
+                navlinkAbout[0].classList.add("active");
+            </script>
+
+        <%};%>
+    
+    </ul>
+</nav>

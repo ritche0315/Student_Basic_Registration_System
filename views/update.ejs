@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+    <div class="container">
+        <!-- header -->
+        <header>
+            <%- include('./partials/nav.ejs') %>
+        </header>
+        <!-- Main -->
+        <main>
+            <div class="update">
+                <div class="update-wrapper">
+                    <h2 class="title">Update Student Record</h2>
+                    <form>
+                        <label for="studentID">ID:</label>
+                        <input type="text" id="studentID" name="studentID" value='<%= studentParams.id %>' readonly>
+                        <br>
+                        <label for="fullname">Student Name:</label>
+                        <input type="text" id="fullname" name="fullname" value="<%= studentParams.fullname %>" required autofocus>
+                        <br>
+                        <label for="yearLevel">Year Level:</label>
+                        <input type="text" id="yearLevel" name="yearLevel" value="<%= studentParams.yearLevel %>" required autofocus>
+                        <br>
+                        <label for="course">Course:</label>
+                        <input type="text" id="course" name="course" value="<%= studentParams.course %>" required autofocus>
+                        <br>
+                        <div class="submit-wrapper">
+                            <input type="button" value="Submit" id="btnUpdate">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <!-- footer -->
+        <%- include('./partials/footer.ejs')%>
+    </div>
+    <script src="/update.js"></script>
+</body>
+</html>

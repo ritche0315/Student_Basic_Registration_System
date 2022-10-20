@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs');%>    
+<body>
+    <div class="container">
+        <!-- header -->
+        <header>
+            <%- include('./partials/nav.ejs');%>
+        </header>
+        <!-- Main -->
+        <main>
+            <div class="student-list">
+                <div class="student-list-wrapper">
+                    <h1 class="title">Student List</h1>
+                    <div class="table-wrapper">
+                        <table id="table-student">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>YearLevel</th>
+                                    <th>Course</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% parsedJSON = JSON.parse(dataSource); %>
+                                <% if(parsedJSON.length > 0) { %>
+                                    <% parsedJSON.forEach((data)=>{ %>
+                                        <tr>
+                                            <td><%= data.id %></td>
+                                            <td><%= data.fullname %></td>
+                                            <td><%= data.yearLevel %></td>
+                                            <td><%= data.course %></td>
+                                            <td><button class="edit-btn">EDIT</button><button class="delete-btn">DEL</button></td>
+                                        </tr>
+                                    <% }); %>
+                                <% } else { %>
+                                    <p class="emptyRecordAlert">There is no record to display...</p>
+                                <% } %>
+                            </tbody>
+                            
+                        </table>
+                        
+                    
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- footer -->
+        <%- include('./partials/footer.ejs')%>
+    </div>
+</body>
+<script>
+    
+    // table
+    const tableEl = document.querySelector("#table-student")
+    const tableBodyEl = document.querySelector("#table-student tbody")
+
+    tableEl.addEventListener("click", async (e)=>{
+        let target = e.target
+        if(target.className == "edit-btn"){
+            let tr = target.closest("tr")
+            for(let i = 0; i < tableBodyEl.rows.length; i++){
+                if(tableBodyEl.rows[i] == tr){
+
+                    let fields = {
+                        id: tableBodyEl.rows[i].cells[0].innerText,
+                        fullname: tableBodyEl.rows[i].cells[1].innerText,
+                        yearLevel: tableBodyEl.rows[i].cells[2].innerText,
+                        course: tableBodyEl.rows[i].cells[3].innerText
+                    }
+
+                    window.location.href = "/update-student/"+ btoa(JSON.stringify(fields));
+                }
+            }
+        }
+
+        if(target.className == "delete-btn"){
+            let tr = target.closest("tr")
+            for(let i = 0; i < tableBodyEl.rows.length; i++){
+                if(tableBodyEl.rows[i] == tr){
+                    let id = tableBodyEl.rows[i].cells[0].innerText;
+
+                    let result = await fetch('/delete/'+btoa(JSON.stringify({id: id})), {
+                        method: "DELETE",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+
+
+                    if(result.status == 200){
+                        alert("Succesfully Deleted!");
+                        let response = await fetch('/students-ajax')
+                        if(response.status == 200){
+                            let responseData = JSON.parse(atob(await response.text()));
+                            let html = ``
+                            const studentTableEl = document.querySelector("#table-student tbody")
+                            Array.from(responseData).forEach(data=>{
+                                html += 
+                                    `<tr>
+                                        <td>${data.id}</td>
+                                        <td>${data.fullname}</td>
+                                        <td>${data.yearLevel}</td>
+                                        <td>${data.course}</td>
+                                        <td><button class="edit-btn">Edit</button><button class="delete-btn">Delete</button></td>
+                                    </tr>`;
+
+                                
+                            })
+
+                            studentTableEl.innerHTML = html
+
+
+                            
+                        }
+
+                    }
+
+
+                }
+            }
+        }
+    })
+
+</script>
+</html>

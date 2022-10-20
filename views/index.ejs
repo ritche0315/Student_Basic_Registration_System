@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+    <div class="container">
+        <!-- header -->
+        <header>
+            <%- include('./partials/nav.ejs') %>
+        </header>
+        <!-- Main -->
+        <main>
+            <div class="index">
+                <div class="index-col-1">
+                    <div class="welcome-wrapper">
+                        <h1>Welcome Students!</h1>
+                        <br>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur voluptates obcaecati odit, dolore reprehenderit sapiente!</p>
+                        <br>
+                        <a class="registerNow-btn" href="/student-registration">Register Now!</a>
+                    </div>
+                </div>
+                <div class="index-col-2">
+                    <img class="site-bg-img" src="/imgstudents.png" alt="imgstudents">
+                </div>
+            </div>
+        </main>
+        <!-- footer -->
+        <%- include('./partials/footer.ejs')%>
+    </div>
+</body>
+</html>

@@ -1,0 +1,427 @@
+/* CANVAS SETUP */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+:root{
+    --primaryColor1: #1B2959;
+    --primaryColor2: #F3EEEE;
+    --primaryColor3: #5CA0A5;
+    --primaryColor4: #455CAA;
+    --primaryColor5: #318D4B;
+    --primaryColor6: #F2B006;
+    --primaryColor7: #DA1515;
+    
+    --boxShadow: 2px 2px 10px 5px rgba(0,0,0,0.2);
+}
+
+.container{
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content 1fr 50px;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+}
+/*--------------------------------- CANVAS SETUP -------------------------------------------------*/
+
+/* -------------------------------- SECTIONS -------------------------------------------------------*/
+
+/* HEADER SECTION START SCOPE */
+header{
+    background-color: var(--primaryColor1);
+    grid-area: header;
+}
+
+header nav .site-title a{
+    color: white;
+    padding: 5px;
+    margin: 5px;
+}
+
+header nav ul li a{
+    color: white;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+header nav ul li a:hover{
+    background-color: white;
+    color: black;
+}
+
+nav a.active{
+    background-color: white;
+    color: black;
+}
+
+/* Mobile View*/
+@media only screen and (max-width: 768px) {
+    header nav{
+        display: block;
+        height: 100%;
+        margin: 0 1rem;
+    } 
+    header nav ul{
+        margin: 1rem 0;
+    }
+}
+
+
+/* Desktop View */
+@media only screen and (min-width: 768px){
+
+    header nav{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 1fr;
+        height: 100%;
+        align-items: center;
+        position: relative;
+    }
+    
+    header nav .site-title{
+        margin: 0 0 0 1rem;
+    }
+    header nav ul{
+        position: absolute;
+        right: 0;
+        margin-right: 1rem;
+    }
+    
+    header nav ul li{
+        display: inline-block;
+    }
+    
+    header nav .separator-nav{
+        display: none;
+    }
+}
+
+/* HEADER SECTION END SCOPE */
+
+/* MAIN SECTION START SCOPE */
+
+main{
+    background-color: var(--primaryColor2);
+    grid-area: main;
+}
+/* MAIN SECTION END SCOPE */
+
+/* FOOTER SECTION START SCOPE */
+
+footer{
+    grid-area: footer;
+    background-color: var(--primaryColor3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FOOTER SECTION END SCOPE */
+
+/* -------------------------------- SECTIONS ------------------------------------------------ */
+
+
+/* ----------------------------------- INDEX MODULE -------------------------------------------*/
+main .index {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+main .index .index-col-1{
+    flex: 40%;
+    display: flex;
+    align-items: center;
+}
+main .index  .index-col-1 .welcome-wrapper{
+    margin: 2rem 1rem 2rem 2rem;
+    max-width: 90%;
+    height: auto;
+    padding: 20px 20px 40px 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: var(--boxShadow);
+}
+main .index  .index-col-1 .welcome-wrapper .registerNow-btn{
+    display: block;
+    padding: 10px;
+    border: solid 1px var(--primaryColor1);
+    color: var(--primaryColor1);
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+main .index .index-col-2{
+    flex: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .index .index-col-2 .site-bg-img{
+    border-radius: 50%;
+    width: 60%;
+    object-fit: contain;
+    padding: 5px;
+    margin: 5px;
+}
+/* ----------------------------------- INDEX MODULE -------------------------------------------*/
+
+/* ----------------------------------- REGISTER/UPDATE MODULE ------------------------------------------ */
+
+main .register, .update {
+    height: 100%;
+    width: 100%;
+    /* border: solid 1px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .register .register-wrapper, main .update .update-wrapper{
+    box-shadow: var(--boxShadow);
+    margin: 1rem;
+}
+
+main .register .register-wrapper .title, main .update .update-wrapper .title{
+    background-color: var(--primaryColor4);
+    color: white;
+    padding: 10px;
+    font-weight: 300;
+    text-align: center;
+}
+
+main .register .register-wrapper form, main .update .update-wrapper form{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+main .register .register-wrapper form [type="text"], main .update .update-wrapper form [type="text"]{
+    padding: 5px;
+}
+main .register .register-wrapper form .submit-wrapper, main .update .update-wrapper form .submit-wrapper{
+    display: flex;
+    justify-content: center;
+}
+main .register  .register-wrapper form .submit-wrapper #btnInsert,  
+main .update .update-wrapper form .submit-wrapper #btnUpdate{
+    padding: 10px;
+    width: 50%;
+    background-color: var(--primaryColor5);
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
+
+/* Extra Small Screen Device */
+
+@media screen and (max-width: 600px){
+    main .register .register-wrapper{
+        width: 100%;
+    }
+}
+
+/* Medium Screen Device */
+@media screen and (min-width: 768px){
+    main .register .register-wrapper{
+        width: 300px;
+    }
+}
+
+
+/*----------------------------------------- REGISTER MODULE -------------------------------------- */
+/*------------------------------------------ ABOUT MODULE ---------------------------------------- */
+main .about{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+main .about .about-col-1{
+    flex: 40%;
+    display: flex;
+    align-items: center;
+}
+main .about  .about-col-1 .welcome-wrapper{
+    margin: 2rem 1rem 2rem 2rem;
+    max-width: 90%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: var(--boxShadow);
+}
+main .about .about-col-2{
+    flex: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main .about .about-col-2 .site-bg-img{
+    border-radius: 50%;
+    width: 60%;
+    object-fit: contain;
+    padding: 5px;
+    margin: 5px;
+}
+
+/* Small Device */
+@media screen and (max-width: 600px){
+    main .about{
+        display: block;
+    }
+}
+
+/* ----------------------------------------- ABOUT MODULE ---------------------------------------- */
+
+/* ----------------------------------------- STUDENT LIST MODULE ---------------------------------------- */
+main .student-list{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .student-list .student-list-wrapper{
+    width: 80%;
+    margin: 2rem;
+    box-shadow: var(--boxShadow);
+}
+
+main .student-list .student-list-wrapper .title{
+    background-color: var(--primaryColor4);
+    color: white;
+    text-align: center;
+    font-weight: 300;
+    padding: 10px;
+}
+
+main .student-list .student-list-wrapper .table-wrapper{
+    width: 100%;
+    /* padding: 10px; */
+    overflow-y: auto;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    grid-template-areas: 
+                    "table"
+                    "alert"
+                    ;
+}
+
+main .student-list .student-list-wrapper .table-wrapper #table-student{
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 100%;
+    grid-area: table;
+}
+
+main .student-list .student-list-wrapper .table-wrapper .emptyRecordAlert{
+    grid-area: alert;
+    margin: 1rem;
+}
+main .student-list .student-list-wrapper .table-wrapper #table-student thead{
+    position: sticky;
+    background-color: var(--primaryColor3);
+    color: white;
+    top: 0;
+}
+main .student-list .student-list-wrapper .table-wrapper #table-student th, td{
+    padding: 10px;
+    /* border: solid 1px gray; */
+    text-align: left;
+}
+main .student-list .student-list-wrapper .table-wrapper #table-student thead th{
+    border-right: solid 1px;
+}
+
+main .student-list .student-list-wrapper .table-wrapper #table-student tr{
+    border-bottom: solid 1px;
+}
+
+main .student-list .student-list-wrapper .table-wrapper #table-student td button:nth-of-type(1){
+    padding: 5px;
+    width: calc(50% - 1rem);
+    background-color: var(--primaryColor6);
+    color: white;
+    margin-right: 1rem;
+    border: none;
+    border-radius: 5px;
+}
+main .student-list .student-list-wrapper .table-wrapper #table-student td button:nth-of-type(2){
+    padding: 5px;
+    width: 50%;
+    background-color: var(--primaryColor7);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Small Device */
+
+@media screen and (max-width: 768px){
+    main .student-list .student-list-wrapper .table-wrapper #table-student th, td{
+       display: block;
+    }
+    main .student-list .student-list-wrapper .table-wrapper{
+        height: 500px;
+    }
+    main .student-list .student-list-wrapper .table-wrapper #table-student th, td{
+        border-bottom: solid 1px;
+    }
+}
+@media screen and (min-width: 768px){
+    main .student-list .student-list-wrapper .table-wrapper{
+       height: 500px;
+    }
+}
+
+
+/* ----------------------------------------- STUDENT LIST MODULE ---------------------------------------- */
+/* ----------------------------------------- 404 MODULE ---------------------------------------- */
+.error404{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.error404-wrapper{
+    background-color: white;
+    border-radius: 10px;
+    width: max-content;
+    padding: 20px;
+    margin: 2rem;
+}
+
+.error404-wrapper:nth-child(n){
+    font-size: 2rem;
+}
+/* Extra Small Device */
+@media screen and (max-width: 600px) {
+    .error404-wrapper{
+        width: 100%;
+    }
+}
+/* ----------------------------------------- 404 MODULE ---------------------------------------- */
+
+
+
+
