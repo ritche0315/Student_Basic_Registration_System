@@ -7,7 +7,7 @@ const dbConfig = (sql, data) =>{
         const conn = mysql.createConnection({
             host: "localhost",
             user: "root",
-            password: "1234",
+            password: "",
             database: "student_db"
         })
     

@@ -20,7 +20,7 @@ const studentInsertQuery = async (request, response) => {
     let data = request.body
     // And then, store it to the Student model
     let student = new Student(0, data.fullname, data.yearLevel, data.course);
-    // create an object as argument to be pass on inside the insertStudent method.
+    // create an object 
     let dataFromStudentModel = {
         fullname: student.fullname,
         yearLevel: student.yearLevel,
